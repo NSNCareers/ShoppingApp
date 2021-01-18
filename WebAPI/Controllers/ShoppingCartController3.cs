@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
         /// </summary>
         /// <param name="shoppingCart"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> AddItemToShoppingCart([FromBody]ShoppingCart shoppingCart)
         {
             var results = await _shoppingManager.AddItem(shoppingCart);
@@ -62,7 +62,7 @@ namespace WebAPI.Controllers
         /// </summary>
         /// <param name="shoppingCart"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> UpdateShoppingCart([FromBody]ShoppingCart shoppingCart)
         {
             var results = await _shoppingManager.UpdateItem(shoppingCart);
