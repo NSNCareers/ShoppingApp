@@ -9,11 +9,11 @@ namespace WebAPI.Controllers
 {
     [Route("v1/shopping")]
     [ApiController]
-    public class ShoppingCartController3 : ControllerBase
+    public class ShoppingCartController1 : ControllerBase
     {
         private readonly IShoppingManager _shoppingManager;
 
-        public ShoppingCartController3(IShoppingManager shoppingManager)
+        public ShoppingCartController1(IShoppingManager shoppingManager)
         {
             _shoppingManager = shoppingManager;
         }
@@ -24,7 +24,6 @@ namespace WebAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize]
         public async Task<IActionResult> RemoveFromShoppingCart([FromRoute]int id)
         {
             var results = await _shoppingManager.RemoveItem(id);
@@ -37,7 +36,6 @@ namespace WebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAllItemFromShoppingCart()
         {
 
@@ -52,7 +50,6 @@ namespace WebAPI.Controllers
         /// <param name="shoppingCart"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> AddItemToShoppingCart([FromBody]ShoppingCart shoppingCart)
         {
             var results = await _shoppingManager.AddItem(shoppingCart);
@@ -66,7 +63,6 @@ namespace WebAPI.Controllers
         /// <param name="shoppingCart"></param>
         /// <returns></returns>
         [HttpPut]
-        [Authorize]
         public async Task<IActionResult> UpdateShoppingCart([FromBody]ShoppingCart shoppingCart)
         {
             var results = await _shoppingManager.UpdateItem(shoppingCart);
@@ -80,7 +76,6 @@ namespace WebAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<IActionResult> GetItemFromShoppingCart([FromRoute]int id)
         {
             List<ShoppingCart> results;
